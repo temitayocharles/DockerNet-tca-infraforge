@@ -11,6 +11,8 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
+console.log('SERVER_PORT:', process.env.SERVER_PORT);
+
 const app: Application = express();
 
 app.use(express.json());
@@ -26,7 +28,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/api/networks', networksRouter);
 
 // all traffic to /api/containers
-app.use('/api/containers', containersRouter);
+// app.use('/api/containers', containersRouter);
 
 // wildcard route always returns html
 // so that client side react routes don't 404

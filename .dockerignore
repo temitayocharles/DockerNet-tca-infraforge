@@ -1,0 +1,16 @@
+node_modules
+.git
+.env
+README.md
+*.log
+dist
+build
+.dockerignore
+Dockerfile
+docker-compose.yml
+webpack.config.js
+tsconfig.json
+jest.config.js
+.prettierrc.js
+.eslintrc.js
+.babelrc

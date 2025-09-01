@@ -23,8 +23,8 @@ module.exports = {
     },
     port: process.env.FRONTEND_PORT,
     proxy: {
-      '/networks': `http://localhost:${process.env.SERVER_PORT}/`,
-      '/api': `http://localhost:${process.env.SERVER_PORT}/`,
+      '/networks': 'http://backend:3031/',
+      '/api': 'http://backend:3031/',
     },
   },
 

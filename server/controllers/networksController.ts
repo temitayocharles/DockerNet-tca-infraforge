@@ -14,10 +14,12 @@ const networksController = (() => {
     next: NextFunction
   ) => {
     try {
+      console.log('PATH:', process.env.PATH);
       // this version of the docker API returns networks and associated containers
       // Docker's API is backwards compatible with older versions
+      console.log('About to exec curl');
       const { stdout, stderr } = await exec(
-        'curl --unix-socket /var/run/docker.sock http://localhost/v1.18/networks'
+        '/usr/bin/curl --unix-socket /var/run/docker.sock http://localhost/v1.24/networks'
       );
 
       if (!stdout) {
@@ -26,6 +28,9 @@ const networksController = (() => {
           message: stderr,
         });
       }
+
+      console.log('stdout:', stdout.substring(0, 100));
+      console.log('stderr:', stderr);
 
       const rawNetworksAndContainers = JSON.parse(stdout);
 
@@ -36,6 +41,7 @@ const networksController = (() => {
       res.locals.networksAndContainers = networksAndContainers;
       return next();
     } catch (error) {
+      console.log('Error in getNetworksAndContainers:', error);
       return next({
         log: 'Docker API unresponsive in getNetworksAndContainers',
         message: error,
