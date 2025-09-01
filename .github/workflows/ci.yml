@@ -61,7 +61,7 @@ jobs:
       - name: Build and push Docker images
         run: |
           # Build images
-          docker-compose build
+          docker compose build
 
           # Tag for Docker Hub
           docker tag dockernet-deployment-backend:latest ${{ secrets.DOCKER_USERNAME }}/dockernet-backend:latest
