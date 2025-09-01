@@ -40,6 +40,7 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
     };
   };
 
+  // Fixed TypeScript error for optional network
   const graphData = createGraphData(containers, network?.name || 'default');
 
   return (
