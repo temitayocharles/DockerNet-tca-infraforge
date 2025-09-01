@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npx tsc
+RUN ./node_modules/.bin/tsc
 
 # Backend runtime
 FROM node:20 as backend
@@ -24,7 +24,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npx webpack --mode production
+RUN ./node_modules/.bin/webpack --mode production
 
 # Frontend runtime
 FROM nginx:alpine as frontend
