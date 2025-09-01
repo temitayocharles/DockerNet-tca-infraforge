@@ -40,7 +40,7 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
     };
   };
 
-  const graphData = createGraphData(containers, network.name);
+  const graphData = createGraphData(containers, network?.name || 'default');
 
   return (
     <div>

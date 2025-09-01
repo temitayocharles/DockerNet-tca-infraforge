@@ -51,7 +51,10 @@ export const ListDisplay: React.FC<IProps> = ({
         <div className="container-list-item">{`${container.id}`}</div>
         <div className="container-list-item">{`${container.ipAddress}`}</div>
         <button
-          onClick={() => disconnectContainer(network.name, container.name)}
+          onClick={() =>
+            network && disconnectContainer(network.name, container.name)
+          }
+          disabled={!network}
         >
           Disconnect
         </button>
